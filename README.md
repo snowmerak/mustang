@@ -1,6 +1,6 @@
 # 머스탱 어투 변환기
 
-> **Eeeentertainment!**  
+> **Eeeentertainment!** (Tetra Line)  
 > 《승리의 여신: 니케》 머스탱의 화려하고 과장된 엔터테인먼트 CEO 말투로 문장을 변환하는 웹 도구입니다.
 
 ---
@@ -39,7 +39,7 @@ cp .env.example .env.local
 |---------------------|-----------------------------------|-------------------------------------------|
 | `OPENAI_API_KEY`    | API 키                            | `sk-...` 또는 Groq 키                     |
 | `OPENAI_BASE_URL`   | OpenAI 호환 엔드포인트            | `https://api.openai.com/v1` 또는 Groq URL |
-| `OPENAI_MODEL`      | 사용할 모델                       | `gpt-4o-mini`, `llama-3.3-70b-versatile`  |
+| `OPENAI_MODEL`      | 사용할 모델                       | `gpt-4o-mini`, `gemma4:e4b`               |
 
 ### 3. 개발 서버 실행
 
@@ -65,13 +65,26 @@ OPENAI_BASE_URL=https://api.groq.com/openai/v1
 OPENAI_MODEL=llama-3.3-70b-versatile
 ```
 
-### Ollama (완전 로컬)
+### Ollama / LM Studio (로컬 추천)
+
+로컬에서 돌릴 때는 **gemma4:e4b** 모델을 가장 추천합니다.  
+한국어 어투 변환 품질이 준수하면서도 속도가 빠르고 가볍습니다.
+
+#### Ollama
 ```env
 OPENAI_BASE_URL=http://localhost:11434/v1
-OPENAI_MODEL=gemma2:9b          # 또는 llama3.1:8b
+OPENAI_MODEL=gemma4:e4b
 ```
 
 Ollama 실행 후 OpenAI 호환 서버를 켜야 합니다 (`OLLAMA_HOST`).
+
+#### LM Studio
+```env
+OPENAI_BASE_URL=http://localhost:1234/v1
+OPENAI_MODEL=gemma4:e4b
+```
+
+LM Studio에서 모델을 로드한 뒤, 우측 상단의 "Local Server"를 실행하면 됩니다. (기본 포트 1234)
 
 ---
 
@@ -94,7 +107,7 @@ Ollama 실행 후 OpenAI 호환 서버를 켜야 합니다 (`OLLAMA_HOST`).
 
 - Next.js 16 + App Router
 - Tailwind CSS 4 + shadcn/ui
-- OpenAI SDK (호환 엔드포인트)
+- ky (OpenAI Compatible API 호출)
 - TypeScript
 
 ---
@@ -132,4 +145,4 @@ components/ui/             # shadcn 컴포넌트
 
 개인/팀 내부 사용 목적으로 자유롭게 사용하세요.
 
-**Eeeentertainment!** — Missilis Industry
+**Eeeentertainment!** — Tetra Line
